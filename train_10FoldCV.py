@@ -95,6 +95,140 @@ dim_sideeffect = int(opts.d)
 dim_pred = int(opts.k)
 dim_pass = int(opts.d)
 
+## model definition for NeoDTI model
+'''
+class Model(object):
+    def __init__(self):
+        self._build_model()
+    
+    def _build_model(self):
+        #inputs
+        self.drug_drug = tf.placeholder(tf.float32, [num_drug, num_drug])
+        self.drug_drug_normalize = tf.placeholder(tf.float32, [num_drug, num_drug])
+
+        self.drug_chemical = tf.placeholder(tf.float32, [num_drug, num_drug])
+        self.drug_chemical_normalize = tf.placeholder(tf.float32, [num_drug, num_drug])
+
+        self.drug_disease = tf.placeholder(tf.float32, [num_drug, num_disease])
+        self.drug_disease_normalize = tf.placeholder(tf.float32, [num_drug, num_disease])
+
+        self.drug_sideeffect = tf.placeholder(tf.float32, [num_drug, num_sideeffect])
+        self.drug_sideeffect_normalize = tf.placeholder(tf.float32, [num_drug, num_sideeffect])
+
+        
+        self.protein_protein = tf.placeholder(tf.float32, [num_protein, num_protein])
+        self.protein_protein_normalize = tf.placeholder(tf.float32, [num_protein, num_protein])
+
+        self.protein_sequence = tf.placeholder(tf.float32, [num_protein, num_protein])
+        self.protein_sequence_normalize = tf.placeholder(tf.float32, [num_protein, num_protein])
+
+        self.protein_disease = tf.placeholder(tf.float32, [num_protein, num_disease])
+        self.protein_disease_normalize = tf.placeholder(tf.float32, [num_protein, num_disease])
+        
+        self.disease_drug = tf.placeholder(tf.float32, [num_disease, num_drug])
+        self.disease_drug_normalize = tf.placeholder(tf.float32, [num_disease, num_drug])
+
+        self.disease_protein = tf.placeholder(tf.float32, [num_disease, num_protein])
+        self.disease_protein_normalize = tf.placeholder(tf.float32, [num_disease, num_protein])
+
+        self.sideeffect_drug = tf.placeholder(tf.float32, [num_sideeffect, num_drug])
+        self.sideeffect_drug_normalize = tf.placeholder(tf.float32, [num_sideeffect, num_drug])
+
+        self.drug_protein = tf.placeholder(tf.float32, [num_drug, num_protein])
+        self.drug_protein_normalize = tf.placeholder(tf.float32, [num_drug, num_protein])
+
+        self.protein_drug = tf.placeholder(tf.float32, [num_protein, num_drug])
+        self.protein_drug_normalize = tf.placeholder(tf.float32, [num_protein, num_drug])
+
+        self.drug_protein_mask = tf.placeholder(tf.float32, [num_drug, num_protein])
+
+        #features
+        self.drug_embedding = weight_variable([num_drug,dim_drug])
+        self.protein_embedding = weight_variable([num_protein,dim_protein])
+        self.disease_embedding = weight_variable([num_disease,dim_disease])
+        self.sideeffect_embedding = weight_variable([num_sideeffect,dim_sideeffect])
+
+        tf.add_to_collection('l2_reg', tf.contrib.layers.l2_regularizer(1.0)(self.drug_embedding))
+        tf.add_to_collection('l2_reg', tf.contrib.layers.l2_regularizer(1.0)(self.protein_embedding))
+        tf.add_to_collection('l2_reg', tf.contrib.layers.l2_regularizer(1.0)(self.disease_embedding))
+        tf.add_to_collection('l2_reg', tf.contrib.layers.l2_regularizer(1.0)(self.sideeffect_embedding))
+
+
+
+        #feature passing weights (maybe different types of nodes can use different weights)
+        W0 = weight_variable([dim_pass+dim_drug, dim_drug])
+        b0 = bias_variable([dim_drug])
+        tf.add_to_collection('l2_reg', tf.contrib.layers.l2_regularizer(1.0)(W0))
+
+        #passing 1 times (can be easily extended to multiple passes)
+        drug_vector1 = tf.nn.l2_normalize(relu(tf.matmul(
+            tf.concat([tf.matmul(self.drug_drug_normalize, a_layer(self.drug_embedding, dim_pass)) + \
+            tf.matmul(self.drug_chemical_normalize, a_layer(self.drug_embedding, dim_pass)) + \
+            tf.matmul(self.drug_disease_normalize, a_layer(self.disease_embedding, dim_pass)) + \
+            tf.matmul(self.drug_sideeffect_normalize, a_layer(self.sideeffect_embedding, dim_pass)) + \
+            tf.matmul(self.drug_protein_normalize, a_layer(self.protein_embedding, dim_pass)), \
+            self.drug_embedding], axis=1), W0)+b0),dim=1)
+
+        protein_vector1 = tf.nn.l2_normalize(relu(tf.matmul(
+            tf.concat([tf.matmul(self.protein_protein_normalize, a_layer(self.protein_embedding, dim_pass)) + \
+            tf.matmul(self.protein_sequence_normalize, a_layer(self.protein_embedding, dim_pass)) + \
+            tf.matmul(self.protein_disease_normalize, a_layer(self.disease_embedding, dim_pass)) + \
+            tf.matmul(self.protein_drug_normalize, a_layer(self.drug_embedding, dim_pass)), \
+            self.protein_embedding], axis=1), W0)+b0),dim=1)
+
+        disease_vector1 = tf.nn.l2_normalize(relu(tf.matmul(
+            tf.concat([tf.matmul(self.disease_drug_normalize, a_layer(self.drug_embedding, dim_pass)) + \
+            tf.matmul(self.disease_protein_normalize, a_layer(self.protein_embedding, dim_pass)), \
+            self.disease_embedding], axis=1), W0)+b0),dim=1)
+
+        sideeffect_vector1 = tf.nn.l2_normalize(relu(tf.matmul(
+            tf.concat([tf.matmul(self.sideeffect_drug_normalize, a_layer(self.drug_embedding, dim_pass)), \
+            self.sideeffect_embedding], axis=1), W0)+b0),dim=1)
+
+
+        self.drug_representation = drug_vector1
+        self.protein_representation = protein_vector1
+        self.disease_representation = disease_vector1
+        self.sideeffect_representation = sideeffect_vector1
+
+        #reconstructing networks
+        self.drug_drug_reconstruct = bi_layer(self.drug_representation,self.drug_representation, sym=True, dim_pred=dim_pred)
+        self.drug_drug_reconstruct_loss = tf.reduce_sum(tf.multiply((self.drug_drug_reconstruct-self.drug_drug), (self.drug_drug_reconstruct-self.drug_drug)))
+
+        self.drug_chemical_reconstruct = bi_layer(self.drug_representation,self.drug_representation, sym=True, dim_pred=dim_pred)
+        self.drug_chemical_reconstruct_loss = tf.reduce_sum(tf.multiply((self.drug_chemical_reconstruct-self.drug_chemical), (self.drug_chemical_reconstruct-self.drug_chemical)))
+
+
+        self.drug_disease_reconstruct = bi_layer(self.drug_representation,self.disease_representation, sym=False, dim_pred=dim_pred)
+        self.drug_disease_reconstruct_loss = tf.reduce_sum(tf.multiply((self.drug_disease_reconstruct-self.drug_disease), (self.drug_disease_reconstruct-self.drug_disease)))
+
+
+        self.drug_sideeffect_reconstruct = bi_layer(self.drug_representation,self.sideeffect_representation, sym=False, dim_pred=dim_pred)
+        self.drug_sideeffect_reconstruct_loss = tf.reduce_sum(tf.multiply((self.drug_sideeffect_reconstruct-self.drug_sideeffect), (self.drug_sideeffect_reconstruct-self.drug_sideeffect)))
+
+
+        self.protein_protein_reconstruct = bi_layer(self.protein_representation,self.protein_representation, sym=True, dim_pred=dim_pred)
+        self.protein_protein_reconstruct_loss = tf.reduce_sum(tf.multiply((self.protein_protein_reconstruct-self.protein_protein), (self.protein_protein_reconstruct-self.protein_protein)))
+
+        self.protein_sequence_reconstruct = bi_layer(self.protein_representation,self.protein_representation, sym=True, dim_pred=dim_pred)
+        self.protein_sequence_reconstruct_loss = tf.reduce_sum(tf.multiply((self.protein_sequence_reconstruct-self.protein_sequence), (self.protein_sequence_reconstruct-self.protein_sequence)))
+
+
+        self.protein_disease_reconstruct = bi_layer(self.protein_representation,self.disease_representation, sym=False, dim_pred=dim_pred)
+        self.protein_disease_reconstruct_loss = tf.reduce_sum(tf.multiply((self.protein_disease_reconstruct-self.protein_disease), (self.protein_disease_reconstruct-self.protein_disease)))
+
+
+        self.drug_protein_reconstruct = bi_layer(self.drug_representation,self.protein_representation, sym=False, dim_pred=dim_pred)
+        tmp = tf.multiply(self.drug_protein_mask, (self.drug_protein_reconstruct-self.drug_protein))
+        self.drug_protein_reconstruct_loss = tf.reduce_sum(tf.multiply(tmp, tmp))
+
+        self.l2_loss = tf.add_n(tf.get_collection("l2_reg"))
+
+        self.loss = self.drug_protein_reconstruct_loss + 1.0*(self.drug_drug_reconstruct_loss+self.drug_chemical_reconstruct_loss+
+                                                            self.drug_disease_reconstruct_loss+self.drug_sideeffect_reconstruct_loss+
+                                                            self.protein_protein_reconstruct_loss+self.protein_sequence_reconstruct_loss+
+                                                            self.protein_disease_reconstruct_loss) + self.l2_loss
+'''
 
 ## tensorflow's way to define computational graph
 graph = tf.get_default_graph()
