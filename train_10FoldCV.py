@@ -13,10 +13,16 @@ Lines may need to be changed have comments starting with ###!!!
 """
 
 parser = OptionParser()
+parser.add_option("-d", "--d", default=1024, help="The embedding dimension d")
+parser.add_option("-n","--n",default=1, help="global norm to be clipped")
+parser.add_option("-k","--k",default=512,help="The dimension of project matrices k")
 parser.add_option("-t","--t",default = "o",help="Test scenario")
 parser.add_option("-r","--r",default = "ten",help="positive negative ratio")
 
 """
+-d: The embedding dimension d, default: 1024.
+-n: Global norm to be clipped, default: 1.
+-k: The dimension of project matrices, default: 512.
 -r: Positive and negative. Two choices: ten and all, the former one sets the positive:negative = 1:10, the latter one considers all unknown DTIs as negative examples. Default: ten.
 -t: Test scenario. The DTI matrix to be tested. Choices are:
     o, mat_drug_protein.txt will be tested; 
