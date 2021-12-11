@@ -9,13 +9,24 @@ import sys
 from optparse import OptionParser
 
 """
-Lines may need to be changed:
-line 35, 92
+Lines may need to be changed have comments starting with ###!!!
 """
 
 parser = OptionParser()
 parser.add_option("-t","--t",default = "o",help="Test scenario")
 parser.add_option("-r","--r",default = "ten",help="positive negative ratio")
+
+"""
+-r: Positive and negative. Two choices: ten and all, the former one sets the positive:negative = 1:10, the latter one considers all unknown DTIs as negative examples. Default: ten.
+-t: Test scenario. The DTI matrix to be tested. Choices are:
+    o, mat_drug_protein.txt will be tested; 
+    homo, mat_drug_protein_homo_protein_drug.txt will be tested;
+    drug, mat_drug_protein_drug.txt will be tested;
+    disease, mat_drug_protein_disease.txt will be tested;
+    sideeffect, mat_drug_protein_sideeffect.txt will be tested;
+    unique, mat_drug_protein_drug_unique.txt will be tested.
+    Default: o.
+"""
 
 (opts, args) = parser.parse_args()
 
