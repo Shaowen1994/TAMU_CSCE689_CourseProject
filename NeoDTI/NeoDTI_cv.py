@@ -303,6 +303,8 @@ def train_and_evaluate(DTItrain, DTIvalid, DTItest, graph, verbose=True, num_ste
 
 test_auc_round = []
 test_aupr_round = []
+val_auc_round = []
+val_aupr_round = []
 round_num = 3
 n_folds=5
 num_steps = 500
@@ -388,10 +390,14 @@ for r in xrange(round_num): # N-fold CV
 
         test_auc_round.append(t_auc)
         test_aupr_round.append(t_aupr)
+        val_auc_round.append(v_auc)
+        val_aupr_round.append(v_aupr)
 
     else:
         test_auc_fold = []
         test_aupr_fold = []
+        val_auc_fold = []
+        val_aupr_fold = []
         rs = np.random.randint(0,1000,1)[0]
         kf = StratifiedKFold(data_set[:,2], n_folds=n_folds, shuffle=True, random_state=rs)
 
@@ -402,11 +408,16 @@ for r in xrange(round_num): # N-fold CV
             v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
             test_auc_fold.append(t_auc)
             test_aupr_fold.append(t_aupr)
+            val_auc_fold.append(v_auc)
+            val_aupr_fold.append(v_aupr)
 
         test_auc_round.append(np.mean(test_auc_fold))
         test_aupr_round.append(np.mean(test_aupr_fold))
+        val_auc_round.append(np.mean(val_auc_fold))
+        val_aupr_round.append(np.mean(val_aupr_fold))
 
-#np.savetxt('results/test_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_auc_round)
-#np.savetxt('results/test_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_aupr_round)
+print 'score report, val auc: %.3f, val aupr: %.3f, test auc: %.3f, val aupr: %.3f' % (np.mean(val_auc_round),np.mean(val_aupr_round),np.mean(test_auc_round),np.mean(test_aupr_round))
 np.savetxt('results/test_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_auc_round)
 np.savetxt('results/test_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_aupr_round)
+np.savetxt('results/val_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), val_auc_round)
+np.savetxt('results/val_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), val_aupr_round)
