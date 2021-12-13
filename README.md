@@ -1,6 +1,12 @@
 # TAMU_CSCE689_CourseProject
 Course project of CSCE689 (Graph Mining) in TAMU.
 
+The data can be found in /Data/data.zip, and to run the code it need to be unzipped at first.
 
-data.zip in /Data will be unzipped into multiple txt files. But some exceed github's maximum file size. I added this line 'Data/\*.txt' in .gitignore so that all txt files will not be pushed to remote repo.
+## GAE / GVAE
+Go to the folder /gae, and run the following command for training and validation, while *version* can be "gae" or "gvae":
+
+```
+python train_10FoldCV.py --m version
+```
 
