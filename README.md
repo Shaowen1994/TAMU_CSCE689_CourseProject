@@ -12,7 +12,7 @@ python train_10FoldCV_gvae.py --m version
 ```
 
 ## NeoDTI
-Go to the folder /gae, and run the following command for training and validation:
+Go to the folder /NeoDTI, and run the following command for training and validation:
 ```
 python NeoDTI_cv.py
 ```
