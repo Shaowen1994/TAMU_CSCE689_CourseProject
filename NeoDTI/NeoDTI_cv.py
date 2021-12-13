@@ -24,7 +24,7 @@ parser.add_option("-d", "--d", default=1024, help="The embedding dimension d")
 parser.add_option("-n","--n",default=1, help="global norm to be clipped")
 parser.add_option("-k","--k",default=512,help="The dimension of project matrices k")
 parser.add_option("-t","--t",default = "o",help="Test scenario")
-parser.add_option("-r","--r",default = "ten",help="positive negative ratio")
+parser.add_option("-r","--r",default = "one",help="positive negative ratio")
 
 (opts, args) = parser.parse_args()
 
@@ -298,13 +298,23 @@ def train_and_evaluate(DTItrain, DTIvalid, DTItest, graph, verbose=True, num_ste
                         ground_truth.append(ele[2])
                     test_auc = roc_auc_score(ground_truth, pred_list)
                     test_aupr = average_precision_score(ground_truth, pred_list)
-                print 'valid auc aupr,', valid_auc, valid_aupr, 'test auc aupr', test_auc, test_aupr
-    return best_valid_auc, best_valid_aupr, test_auc, test_aupr
+                    ## train set
+                    pred_list = []
+                    ground_truth = []
+                    for ele in DTItrain:
+                        pred_list.append(results[ele[0],ele[1]])
+                        ground_truth.append(ele[2])
+                    train_auc = roc_auc_score(ground_truth, pred_list)
+                    train_aupr = average_precision_score(ground_truth, pred_list)
+                print 'train auc aupr,', train_auc, train_aupr, 'valid auc aupr,', valid_auc, valid_aupr, 'test auc aupr', test_auc, test_aupr
+    return best_valid_auc, best_valid_aupr, test_auc, test_aupr, train_auc, train_aupr
 
 test_auc_round = []
 test_aupr_round = []
 val_auc_round = []
 val_aupr_round = []
+train_auc_round = []
+train_aupr_round = []
 round_num = 3
 n_folds=5
 num_steps = 500
@@ -386,18 +396,22 @@ for r in xrange(round_num): # N-fold CV
         DTItest = data_set_test
         rs = np.random.randint(0,1000,1)[0]
         DTItrain, DTIvalid =  train_test_split(DTItrain, test_size=0.05, random_state=rs)
-        v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
+        v_auc, v_aupr, t_auc, t_aupr, tr_auc, tr_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
 
         test_auc_round.append(t_auc)
         test_aupr_round.append(t_aupr)
         val_auc_round.append(v_auc)
         val_aupr_round.append(v_aupr)
+        train_auc_round.append(tr_auc)
+        train_aupr_round.append(tr_aupr)
 
     else:
         test_auc_fold = []
         test_aupr_fold = []
         val_auc_fold = []
         val_aupr_fold = []
+        train_auc_fold = []
+        train_aupr_fold = []
         rs = np.random.randint(0,1000,1)[0]
         kf = StratifiedKFold(data_set[:,2], n_folds=n_folds, shuffle=True, random_state=rs)
 
@@ -405,19 +419,25 @@ for r in xrange(round_num): # N-fold CV
             DTItrain, DTItest = data_set[train_index], data_set[test_index]
             DTItrain, DTIvalid =  train_test_split(DTItrain, test_size=0.05, random_state=rs)
 
-            v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
+            v_auc, v_aupr, t_auc, t_aupr, tr_auc, tr_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
             test_auc_fold.append(t_auc)
             test_aupr_fold.append(t_aupr)
             val_auc_fold.append(v_auc)
             val_aupr_fold.append(v_aupr)
+            train_auc_fold.append(tr_auc)
+            train_aupr_fold.append(tr_aupr)
 
         test_auc_round.append(np.mean(test_auc_fold))
         test_aupr_round.append(np.mean(test_aupr_fold))
         val_auc_round.append(np.mean(val_auc_fold))
         val_aupr_round.append(np.mean(val_aupr_fold))
+        train_auc_round.append(np.mean(train_auc_fold))
+        train_aupr_round.append(np.mean(train_aupr_fold))
 
-print 'score report, val auc: %.3f, val aupr: %.3f, test auc: %.3f, val aupr: %.3f' % (np.mean(val_auc_round),np.mean(val_aupr_round),np.mean(test_auc_round),np.mean(test_aupr_round))
+print 'score report, train auc aupr: %.3f %.3f, val auc aupr: %.3f %.3f, test auc aupr: %.3f %.3f' % (np.mean(train_auc_round),np.mean(train_aupr_round),np.mean(val_auc_round),np.mean(val_aupr_round),np.mean(test_auc_round),np.mean(test_aupr_round))
 np.savetxt('results/test_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_auc_round)
 np.savetxt('results/test_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_aupr_round)
 np.savetxt('results/val_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), val_auc_round)
 np.savetxt('results/val_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), val_aupr_round)
+np.savetxt('results/train_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), train_auc_round)
+np.savetxt('results/train_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), train_aupr_round)
