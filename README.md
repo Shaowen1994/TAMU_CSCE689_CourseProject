@@ -8,6 +8,6 @@ Firstly build the conda environment with the file *GVAE.yml* in the /Emviroment 
 Go to the folder /gae, and run the following command for training and validation, while *version* can be "gae" or "gvae":
 
 ```
-python train_10FoldCV.py --m version
+python train_10FoldCV_gvae.py --m version
 ```
 
