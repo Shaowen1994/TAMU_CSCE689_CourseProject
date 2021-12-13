@@ -17,4 +17,10 @@ Go to the folder /NeoDTI, and run the following command for training and validat
 python NeoDTI_cv.py
 ```
 
+## Graph Factorization
+Go to the folder /gf, and run the command below for training and validation
+```
+python linkpre.py
+```
+
 
