@@ -14,10 +14,10 @@ import scipy.sparse as sp
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import average_precision_score
 
-from gae.optimizer import OptimizerAE, OptimizerVAE
-from gae.input_data import load_data
-from gae.model import GCNModelAE, GCNModelVAE
-from gae.preprocessing import preprocess_graph, construct_feed_dict, sparse_to_tuple, mask_test_edges
+from optimizer import OptimizerAE, OptimizerVAE
+from dataloader import load_data
+from model import GCNModelAE, GCNModelVAE
+from preprocessing import preprocess_graph, construct_feed_dict, sparse_to_tuple, mask_test_edges
 
 # Settings
 flags = tf.app.flags
@@ -39,11 +39,15 @@ dataset_str = FLAGS.dataset
 # Load data
 adj, features = load_data(dataset_str)
 
+#print(type(adj), adj.shape, type(features), features.shape)
+#quit()
+
 # Store original adjacency matrix (without diagonal entries) for later
 adj_orig = adj
 adj_orig = adj_orig - sp.dia_matrix((adj_orig.diagonal()[np.newaxis, :], [0]), shape=adj_orig.shape)
 adj_orig.eliminate_zeros()
 
+# prepare the training, test and validation sets
 adj_train, train_edges, val_edges, val_edges_false, test_edges, test_edges_false = mask_test_edges(adj)
 adj = adj_train
 
@@ -66,6 +70,10 @@ num_nodes = adj.shape[0]
 features = sparse_to_tuple(features.tocoo())
 num_features = features[2][1]
 features_nonzero = features[1].shape[0]
+
+print(features)
+print(num_features)
+print(features_nonzero)
 
 # Create model
 model = None

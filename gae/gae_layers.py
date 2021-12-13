@@ -1,4 +1,4 @@
-from gae.initializations import *
+from initializations import *
 import tensorflow as tf
 
 flags = tf.app.flags
@@ -29,7 +29,6 @@ def dropout_sparse(x, keep_prob, num_nonzero_elems):
     pre_out = tf.sparse_retain(x, dropout_mask)
     return pre_out * (1./keep_prob)
 
-
 class Layer(object):
     """Base layer class. Defines basic API for all layer objects.
 
@@ -55,14 +54,46 @@ class Layer(object):
         self.logging = logging
         self.issparse = False
 
-    def _call(self, inputs):
-        return inputs
+    def _call(self, inputs_1):
+        return inputs_1
 
-    def __call__(self, inputs):
+    def __call__(self, inputs_1):
         with tf.name_scope(self.name):
-            outputs = self._call(inputs)
+            outputs = self._call(inputs_1)
             return outputs
 
+class Layer_2(object):
+    """Base layer class. Defines basic API for all layer objects.
+
+    # Properties
+        name: String, defines the variable scope of the layer.
+
+    # Methods
+        _call(inputs): Defines computation graph of layer
+            (i.e. takes input, returns output)
+        __call__(inputs): Wrapper for _call()
+    """
+    def __init__(self, **kwargs):
+        allowed_kwargs = {'name', 'logging'}
+        for kwarg in kwargs.keys():
+            assert kwarg in allowed_kwargs, 'Invalid keyword argument: ' + kwarg
+        name = kwargs.get('name')
+        if not name:
+            layer = self.__class__.__name__.lower()
+            name = layer + '_' + str(get_layer_uid(layer))
+        self.name = name
+        self.vars = {}
+        logging = kwargs.get('logging', False)
+        self.logging = logging
+        self.issparse = False
+
+    def _call(self, inputs_1, inputs_2):
+        return inputs_1
+
+    def __call__(self, inputs_1, inputs_2):
+        with tf.name_scope(self.name):
+            outputs = self._call(inputs_1, inputs_2)
+            return outputs
 
 class GraphConvolution(Layer):
     """Basic graph convolution layer for undirected graph without edge labels."""
@@ -75,13 +106,12 @@ class GraphConvolution(Layer):
         self.act = act
 
     def _call(self, inputs):
-        x = inputs
-        x = tf.nn.dropout(x, 1-self.dropout)
+        x = tf.nn.dropout(inputs, 1-self.dropout)
         x = tf.matmul(x, self.vars['weights'])
-        x = tf.sparse_tensor_dense_matmul(self.adj, x)
+        #x = tf.sparse_tensor_dense_matmul(self.adj, x)
+        x = tf.matmul(self.adj, x)
         outputs = self.act(x)
         return outputs
-
 
 class GraphConvolutionSparse(Layer):
     """Graph convolution layer for sparse inputs."""
@@ -104,17 +134,20 @@ class GraphConvolutionSparse(Layer):
         return outputs
 
 
-class InnerProductDecoder(Layer):
+class InnerProductDecoder(Layer_2):
     """Decoder model layer for link prediction."""
     def __init__(self, input_dim, dropout=0., act=tf.nn.sigmoid, **kwargs):
         super(InnerProductDecoder, self).__init__(**kwargs)
         self.dropout = dropout
         self.act = act
 
-    def _call(self, inputs):
-        inputs = tf.nn.dropout(inputs, 1-self.dropout)
-        x = tf.transpose(inputs)
+    def _call(self, inputs_1, inputs_2 = None):
+        inputs = tf.nn.dropout(inputs_1, 1-self.dropout)
+        if inputs_2 is None:
+            x = tf.transpose(inputs)
+        else:
+            x = tf.transpose(tf.nn.dropout(inputs_2, 1-self.dropout))
         x = tf.matmul(inputs, x)
-        x = tf.reshape(x, [-1])
+        #x = tf.reshape(x, [-1])
         outputs = self.act(x)
         return outputs
