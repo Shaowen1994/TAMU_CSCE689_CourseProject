@@ -1,0 +1,702 @@
+/scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/sklearn/cross_validation.py:41: DeprecationWarning: This module was deprecated in version 0.18 in favor of the model_selection module into which all the refactored classes and functions are moved. Also note that the interface of the new CV iterators are different from that of this module. This module will be removed in 0.20.
+  "This module will be removed in 0.20.", DeprecationWarning)
+2021-12-12 20:41:26.655665: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+2021-12-12 20:41:26.655767: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use SSE4.2 instructions, but these are available on your machine and could speed up CPU computations.
+2021-12-12 20:41:26.655782: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX instructions, but these are available on your machine and could speed up CPU computations.
+2021-12-12 20:41:26.655792: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use AVX2 instructions, but these are available on your machine and could speed up CPU computations.
+2021-12-12 20:41:26.655802: W tensorflow/core/platform/cpu_feature_guard.cc:45] The TensorFlow library wasn't compiled to use FMA instructions, but these are available on your machine and could speed up CPU computations.
+2021-12-12 20:41:26.770466: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 0 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.6405
+pciBusID 0000:83:00.0
+Total memory: 11.92GiB
+Free memory: 11.84GiB
+2021-12-12 20:41:26.821962: W tensorflow/stream_executor/cuda/cuda_driver.cc:523] A non-primary context 0x558cfc256fd0 exists before initializing the StreamExecutor. We haven't verified StreamExecutor works with that.
+2021-12-12 20:41:26.822823: I tensorflow/core/common_runtime/gpu/gpu_device.cc:940] Found device 1 with properties: 
+name: Tesla K80
+major: 3 minor: 7 memoryClockRate (GHz) 0.6405
+pciBusID 0000:84:00.0
+Total memory: 11.92GiB
+Free memory: 11.85GiB
+2021-12-12 20:41:26.823090: I tensorflow/core/common_runtime/gpu/gpu_device.cc:961] DMA: 0 1 
+2021-12-12 20:41:26.823113: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 0:   Y Y 
+2021-12-12 20:41:26.823124: I tensorflow/core/common_runtime/gpu/gpu_device.cc:971] 1:   Y Y 
+2021-12-12 20:41:26.823161: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 20:41:26.823177: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 20:46:58.565719: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 20:46:58.565824: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 20:52:30.721183: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 20:52:30.726040: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+hdf5 is not supported on this machine (please install/reinstall h5py for optimal experience)
+sample round 1
+step 0 total and dtiloss 2.2516e+08 1116.04
+valid auc aupr, 0.477182539683 0.52305528473 test auc aupr 0.459452580468 0.471521003787
+step 25 total and dtiloss 1.16781e+07 432.213
+valid auc aupr, 0.647817460317 0.619925621595 test auc aupr 0.570502780171 0.529867685097
+step 50 total and dtiloss 9.83864e+06 392.532
+valid auc aupr, 0.793650793651 0.835312276251 test auc aupr 0.759006186859 0.763345138267
+step 75 total and dtiloss 9.65472e+06 358.851
+valid auc aupr, 0.837301587302 0.841546136071 test auc aupr 0.795755344976 0.800094894392
+step 100 total and dtiloss 9.51883e+06 307.126
+valid auc aupr, 0.856150793651 0.826290995001 test auc aupr 0.795755344976 0.800094894392
+step 125 total and dtiloss 9.48572e+06 256.966
+valid auc aupr, 0.885912698413 0.849270520721 test auc aupr 0.841589004621 0.840414573735
+step 150 total and dtiloss 9.41481e+06 215.891
+valid auc aupr, 0.90376984127 0.86367863453 test auc aupr 0.861050199702 0.864225375824
+step 175 total and dtiloss 9.41861e+06 236.664
+valid auc aupr, 0.913194444444 0.869832645951 test auc aupr 0.873228130629 0.87302987826
+step 200 total and dtiloss 9.33113e+06 174.658
+valid auc aupr, 0.913194444444 0.870685505839 test auc aupr 0.880687602788 0.871904646097
+step 225 total and dtiloss 9.17854e+06 154.567
+valid auc aupr, 0.911706349206 0.901411452943 test auc aupr 0.888519069622 0.869923744008
+step 250 total and dtiloss 8.96185e+06 469.938
+valid auc aupr, 0.90873015873 0.903588299727 test auc aupr 0.893100477719 0.869447509532
+step 275 total and dtiloss 8.68462e+06 200.025
+valid auc aupr, 0.91121031746 0.920525387508 test auc aupr 0.899972589866 0.893908502346
+step 300 total and dtiloss 8.2682e+06 166.59
+valid auc aupr, 0.910714285714 0.923122734323 test auc aupr 0.890829352338 0.863995692709
+step 325 total and dtiloss 8.06924e+06 148.421
+valid auc aupr, 0.917658730159 0.924594897447 test auc aupr 0.891338397682 0.870356516816
+step 350 total and dtiloss 7.94736e+06 135.341
+valid auc aupr, 0.914186507937 0.912117469827 test auc aupr 0.891338397682 0.870356516816
+step 375 total and dtiloss 7.8463e+06 124.486
+valid auc aupr, 0.909722222222 0.90560072154 test auc aupr 0.891338397682 0.870356516816
+step 400 total and dtiloss 7.66024e+06 114.57
+valid auc aupr, 0.900793650794 0.901583480001 test auc aupr 0.891338397682 0.870356516816
+step 425 total and dtiloss 7.4123e+06 106.451
+valid auc aupr, 0.896825396825 0.886459575786 test auc aupr 0.891338397682 0.870356516816
+step 450 total and dtiloss 7.39104e+06 108.389
+valid auc aupr, 0.890873015873 0.902546576046 test auc aupr 0.891338397682 0.870356516816
+step 475 total and dtiloss 7.2648e+06 128.515
+valid auc aupr, 0.906746031746 0.904462738097 test auc aupr 0.891338397682 0.870356516816
+step 0 total and dtiloss 2.40712e+08 794.596
+valid auc aupr, 0.462585034014 0.539571722024 test auc aupr 0.547891358025 0.52116665023
+step 25 total and dtiloss 1.23545e+07 457.648
+valid auc aupr, 0.580660835763 0.64638071712 test auc aupr 0.622913580247 0.603794767122
+step 50 total and dtiloss 1.04597e+07 399.348
+valid auc aupr, 0.599611273081 0.652946798993 test auc aupr 0.684464197531 0.705206657794
+step 75 total and dtiloss 1.01059e+07 388.416
+valid auc aupr, 0.678814382896 0.728437455366 test auc aupr 0.745402469136 0.78612625001
+step 100 total and dtiloss 9.65229e+06 368.706
+valid auc aupr, 0.722060252672 0.776438453231 test auc aupr 0.772720987654 0.813156760843
+step 125 total and dtiloss 9.46897e+06 339.984
+valid auc aupr, 0.783770651118 0.827811511873 test auc aupr 0.801343209877 0.834838392354
+step 150 total and dtiloss 9.52995e+06 301.252
+valid auc aupr, 0.821185617104 0.861482908841 test auc aupr 0.81627654321 0.83624220678
+step 175 total and dtiloss 9.55461e+06 261.99
+valid auc aupr, 0.843537414966 0.884235587767 test auc aupr 0.83012345679 0.833731825294
+step 200 total and dtiloss 9.39477e+06 317.918
+valid auc aupr, 0.852283770651 0.888550570061 test auc aupr 0.841955555556 0.838835478244
+step 225 total and dtiloss 9.43106e+06 364.227
+valid auc aupr, 0.853741496599 0.88136684739 test auc aupr 0.841955555556 0.838835478244
+step 250 total and dtiloss 9.48073e+06 232.485
+valid auc aupr, 0.846452866861 0.866250195323 test auc aupr 0.841955555556 0.838835478244
+step 275 total and dtiloss 9.25966e+06 213.035
+valid auc aupr, 0.850826044704 0.867187176059 test auc aupr 0.841955555556 0.838835478244
+step 300 total and dtiloss 9.07479e+06 204.38
+valid auc aupr, 0.870262390671 0.878933375281 test auc aupr 0.841955555556 0.838835478244
+step 325 total and dtiloss 8.84148e+06 182.58
+valid auc aupr, 0.875607385811 0.8768524833 test auc aupr 0.841955555556 0.838835478244
+step 350 total and dtiloss 8.51039e+06 169.425
+valid auc aupr, 0.885811467444 0.897860578628 test auc aupr 0.876069135802 0.87246949602
+step 375 total and dtiloss 8.3421e+06 158.896
+valid auc aupr, 0.887755102041 0.902341857104 test auc aupr 0.878439506173 0.87052240949
+step 400 total and dtiloss 8.28829e+06 146.677
+valid auc aupr, 0.89407191448 0.913514622819 test auc aupr 0.882074074074 0.884014268999
+step 425 total and dtiloss 8.22348e+06 3590.55
+valid auc aupr, 0.899416909621 0.925219765695 test auc aupr 0.877985185185 0.885887412564
+step 450 total and dtiloss 7.86037e+06 421.664
+valid auc aupr, 0.847424684159 0.832065019058 test auc aupr 0.877985185185 0.885887412564
+step 475 total and dtiloss 7.76117e+06 190.117
+valid auc aupr, 0.871720116618 0.873386108105 test auc aupr 0.877985185185 0.885887412564
+step 0 total and dtiloss 2.15686e+08 610.749
+valid auc aupr, 0.5296404276 0.599615281708 test auc aupr 0.550913580247 0.548566287795
+step 25 total and dtiloss 1.15339e+07 423.835
+valid auc aupr, 0.557337220603 0.568335644042 test auc aupr 0.550913580247 0.548566287795
+step 50 total and dtiloss 1.0514e+07 378.969
+valid auc aupr, 0.713313896987 0.762709439072 test auc aupr 0.748977777778 0.742345653339
+step 75 total and dtiloss 9.86579e+06 358.945
+valid auc aupr, 0.766277939747 0.813416131782 test auc aupr 0.78830617284 0.794375166146
+step 100 total and dtiloss 9.82831e+06 335.398
+valid auc aupr, 0.800777453839 0.839886951789 test auc aupr 0.813511111111 0.815981609575
+step 125 total and dtiloss 9.44266e+06 375.216
+valid auc aupr, 0.832847424684 0.864367345519 test auc aupr 0.826804938272 0.824981411409
+step 150 total and dtiloss 9.57779e+06 436.119
+valid auc aupr, 0.842079689018 0.857838324763 test auc aupr 0.826804938272 0.824981411409
+step 175 total and dtiloss 9.6699e+06 318.322
+valid auc aupr, 0.853741496599 0.848347065841 test auc aupr 0.826804938272 0.824981411409
+step 200 total and dtiloss 9.51984e+06 268.141
+valid auc aupr, 0.868804664723 0.856209758969 test auc aupr 0.826804938272 0.824981411409
+step 225 total and dtiloss 9.49083e+06 233.7
+valid auc aupr, 0.885811467444 0.86230591996 test auc aupr 0.826804938272 0.824981411409
+step 250 total and dtiloss 9.32283e+06 229.91
+valid auc aupr, 0.908163265306 0.920244064606 test auc aupr 0.885056790123 0.883698073789
+step 275 total and dtiloss 9.08815e+06 282.559
+valid auc aupr, 0.8527696793 0.837252893423 test auc aupr 0.885056790123 0.883698073789
+step 300 total and dtiloss 9.06738e+06 237.759
+valid auc aupr, 0.884839650146 0.902324306435 test auc aupr 0.885056790123 0.883698073789
+step 325 total and dtiloss 9.07603e+06 222.489
+valid auc aupr, 0.899416909621 0.913821255808 test auc aupr 0.885056790123 0.883698073789
+step 350 total and dtiloss 8.9139e+06 402.353
+valid auc aupr, 0.889212827988 0.90270581399 test auc aupr 0.885056790123 0.883698073789
+step 375 total and dtiloss 8.30022e+06 219.002
+valid auc aupr, 0.905247813411 0.918104084133 test auc aupr 0.885056790123 0.883698073789
+step 400 total and dtiloss 7.94269e+06 185.332
+valid auc aupr, 0.897959183673 0.904621842198 test auc aupr 0.885056790123 0.883698073789
+step 425 total and dtiloss 7.86508e+06 168.241
+valid auc aupr, 0.899416909621 0.889563582687 test auc aupr 0.885056790123 0.883698073789
+step 450 total and dtiloss 7.77565e+06 155.099
+valid auc aupr, 0.898931000972 0.889685203833 test auc aupr 0.885056790123 0.883698073789
+step 475 total and dtiloss 7.72647e+06 140.02
+valid auc aup2021-12-12 20:58:02.583486: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 20:58:02.583599: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:03:31.540750: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:03:31.540862: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:09:06.580311: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:09:06.580424: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+r, 0.905247813411 0.884152438613 test auc aupr 0.885056790123 0.883698073789
+step 0 total and dtiloss 2.36354e+08 761.048
+valid auc aupr, 0.475218658892 0.517945643363 test auc aupr 0.533412345679 0.516608327376
+step 25 total and dtiloss 1.1891e+07 693.607
+valid auc aupr, 0.554907677357 0.565776422702 test auc aupr 0.61252345679 0.575013626482
+step 50 total and dtiloss 9.79824e+06 411.218
+valid auc aupr, 0.645286686103 0.694206713036 test auc aupr 0.690469135802 0.679845898189
+step 75 total and dtiloss 9.72478e+06 388.122
+valid auc aupr, 0.71185617104 0.776207319227 test auc aupr 0.750498765432 0.773440237043
+step 100 total and dtiloss 9.58023e+06 358.803
+valid auc aupr, 0.749271137026 0.819866156735 test auc aupr 0.798103703704 0.809741649088
+step 125 total and dtiloss 9.51068e+06 302.893
+valid auc aupr, 0.759475218659 0.837045343758 test auc aupr 0.818271604938 0.81977074979
+step 150 total and dtiloss 9.4638e+06 245.425
+valid auc aupr, 0.778425655977 0.845778750092 test auc aupr 0.832533333333 0.822818129134
+step 175 total and dtiloss 9.34898e+06 282.373
+valid auc aupr, 0.809523809524 0.861156305751 test auc aupr 0.84882962963 0.828381437769
+step 200 total and dtiloss 9.35744e+06 221.07
+valid auc aupr, 0.826044703596 0.867927654116 test auc aupr 0.858607407407 0.836701988699
+step 225 total and dtiloss 9.26654e+06 195.011
+valid auc aupr, 0.8527696793 0.885470635779 test auc aupr 0.873303703704 0.874052364987
+step 250 total and dtiloss 8.91952e+06 185.666
+valid auc aupr, 0.879494655005 0.911325461902 test auc aupr 0.884543209877 0.888325632477
+step 275 total and dtiloss 8.52076e+06 162.341
+valid auc aupr, 0.878036929057 0.914697160149 test auc aupr 0.887308641975 0.894121363427
+step 300 total and dtiloss 8.14954e+06 149.219
+valid auc aupr, 0.896015549077 0.929478620527 test auc aupr 0.882113580247 0.885673372107
+step 325 total and dtiloss 8.01422e+06 135.76
+valid auc aupr, 0.89990281827 0.933387648634 test auc aupr 0.885609876543 0.89236678064
+step 350 total and dtiloss 7.92985e+06 124.425
+valid auc aupr, 0.904275996113 0.935090821717 test auc aupr 0.886913580247 0.895354744161
+step 375 total and dtiloss 7.75354e+06 124.488
+valid auc aupr, 0.906705539359 0.930331551663 test auc aupr 0.886913580247 0.895354744161
+step 400 total and dtiloss 7.57935e+06 218.18
+valid auc aupr, 0.905247813411 0.931511382682 test auc aupr 0.886913580247 0.895354744161
+step 425 total and dtiloss 7.54213e+06 108.525
+valid auc aupr, 0.913022351798 0.937480783294 test auc aupr 0.897382716049 0.900319541046
+step 450 total and dtiloss 7.37762e+06 104.708
+valid auc aupr, 0.909135082604 0.934642581017 test auc aupr 0.897382716049 0.900319541046
+step 475 total and dtiloss 7.15318e+06 97.4842
+valid auc aupr, 0.907191448008 0.930456933958 test auc aupr 0.897382716049 0.900319541046
+step 0 total and dtiloss 2.11798e+08 969.041
+valid auc aupr, 0.562682215743 0.561228153478 test auc aupr 0.463190123457 0.459518263689
+step 25 total and dtiloss 1.21692e+07 436.861
+valid auc aupr, 0.616618075802 0.621284283691 test auc aupr 0.515239506173 0.486136812066
+step 50 total and dtiloss 9.96748e+06 401.293
+valid auc aupr, 0.775024295432 0.789292392557 test auc aupr 0.712177777778 0.75608725671
+step 75 total and dtiloss 9.84256e+06 379.444
+valid auc aupr, 0.808066083576 0.814149512039 test auc aupr 0.743466666667 0.791354614809
+step 100 total and dtiloss 9.8348e+06 353.958
+valid auc aupr, 0.831389698737 0.836339802662 test auc aupr 0.761501234568 0.803444622707
+step 125 total and dtiloss 9.46716e+06 318.354
+valid auc aupr, 0.84693877551 0.84612335747 test auc aupr 0.780681481481 0.813480795093
+step 150 total and dtiloss 9.67151e+06 747.057
+valid auc aupr, 0.841593780369 0.844074162749 test auc aupr 0.780681481481 0.813480795093
+step 175 total and dtiloss 9.74107e+06 337.849
+valid auc aupr, 0.856656948494 0.874782283646 test auc aupr 0.819654320988 0.834689771317
+step 200 total and dtiloss 9.4273e+06 274.433
+valid auc aupr, 0.86443148688 0.880799966054 test auc aupr 0.824948148148 0.834953269009
+step 225 total and dtiloss 9.33095e+06 245.941
+valid auc aupr, 0.869290573372 0.894362846411 test auc aupr 0.829985185185 0.834095897659
+step 250 total and dtiloss 9.5048e+06 220.319
+valid auc aupr, 0.867832847425 0.901119744348 test auc aupr 0.840711111111 0.844631786133
+step 275 total and dtiloss 9.08787e+06 203.092
+valid auc aupr, 0.877551020408 0.894942531339 test auc aupr 0.840711111111 0.844631786133
+step 300 total and dtiloss 9.03399e+06 191.976
+valid auc aupr, 0.883381924198 0.899116940266 test auc aupr 0.840711111111 0.844631786133
+step 325 total and dtiloss 8.36106e+06 183.58
+valid auc aupr, 0.879494655005 0.910174153842 test auc aupr 0.863762962963 0.874805316283
+step 350 total and dtiloss 8.08241e+06 168.56
+valid auc aupr, 0.895529640428 0.920778413611 test auc aupr 0.875575308642 0.89197382416
+step 375 total and dtiloss 7.96415e+06 168.007
+valid auc aupr, 0.896501457726 0.922386288112 test auc aupr 0.884148148148 0.899636878701
+step 400 total and dtiloss 7.85559e+06 141.589
+valid auc aupr, 0.896015549077 0.920885494062 test auc aupr 0.884148148148 0.899636878701
+step 425 total and dtiloss 7.68063e+06 127.343
+valid auc aupr, 0.885811467444 0.914219112642 test auc aupr 0.884148148148 0.899636878701
+step 450 total and dtiloss 7.41485e+06 117.649
+valid auc aupr, 0.884353741497 0.911702923262 test auc aupr 0.884148148148 0.899636878701
+step 475 total and dtiloss 7.24456e+06 109.414
+valid auc aupr, 0.88824101069 0.911445843506 test auc aupr 0.884148148148 0.899636878701
+sample round 2
+step 0 total and dtiloss 2.05286e+08 687.53
+valid auc aupr, 0.54347826087 0.568591782392 test auc aupr 0.516446080351 0.505797529793
+step 25 total and dtiloss 1.15421e+07 419.088
+valid auc aupr, 0.615612648221 0.608690613399 test auc aupr 0.636659096249 0.650456695067
+step 50 total and dtiloss 1.00444e+07 667.848
+valid auc aupr, 0.65662055336 0.702789527872 test auc aupr 0.727876106195 0.752003182251
+step 75 total and dtiloss 1.01564e+07 501.619
+valid auc aupr, 0.683794466403 0.726115238956 test auc aupr 0.759808912209 0.791727646283
+step 100 total and dtiloss 9.59735e+06 389.668
+valid auc aupr, 0.700592885375 0.724118957142 test auc aupr 0.759808912209 0.791727646283
+step 125 total and dtiloss 1.00078e+07 361.35
+valid auc aupr, 0.717391304348 0.712507743302 test auc aupr 0.759808912209 0.791727646283
+step 150 total and dtiloss 9.95168e+06 336.93
+valid auc aupr, 0.752470355731 0.752199325495 test auc aupr 0.809783459942 0.845505850087
+step 175 total and dtiloss 9.45618e+06 301.067
+valid auc aupr, 0.772727272727 0.772734366615 test auc aupr 0.821834129532 0.853951121824
+step 200 total and dtiloss 9.38659e+06 269.135
+valid auc aupr, 0.804841897233 0.807605413997 test auc aupr 0.837927793876 0.863494372236
+step 225 total and dtiloss 9.38792e+06 338.476
+valid auc aupr, 0.84337944664 0.861013405297 test auc aupr 0.856468791605 0.879404865251
+step 250 total and dtiloss 9.35535e+06 411.112
+valid auc aupr, 0.829545454545 0.843071796317 test auc aupr 0.856468791605 0.879404865251
+step 275 total and dtiloss 8.69534e+06 268.874
+valid auc aupr, 0.824110671937 0.835328339309 test auc aupr 0.856468791605 0.879404865251
+step 300 total and dtiloss 8.42094e+06 231.866
+valid auc aupr, 0.830533596838 0.8406336685 test auc aupr 0.856468791605 0.879404865251
+step 325 total and dtiloss 8.2105e+06 214.547
+valid auc aupr, 0.853260869565 0.864431823009 test auc aupr 0.87671313337 0.886114261688
+step 350 total and dtiloss 7.9916e+06 201.444
+valid auc aupr, 0.864624505929 0.88392257783 test auc aupr 0.886776568251 0.882932787062
+step 375 total and dtiloss 7.90468e+06 188.08
+valid auc aupr, 0.881916996047 0.9016346276 test auc aupr 0.897153261806 0.895338270363
+step 400 total and dtiloss 7.83119e+06 175.309
+valid auc aupr, 0.885375494071 0.904333491429 test auc aupr 0.908097736706 0.917402834182
+step 425 total and dtiloss 7.72998e+06 168.003
+valid auc aupr, 0.888833992095 0.90825773091 test auc aupr 0.911680632783 0.924869291616
+step 450 total and dtiloss 7.34714e+06 153.874
+valid auc aupr, 0.888339920949 0.911935098171 test auc aupr 0.913364398152 0.926498734982
+step 475 total and dtiloss 7.27251e+06 144.027
+valid auc aupr, 0.89081022021-12-12 21:14:38.282872: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:14:38.282969: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:20:06.777500: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:20:06.777609: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:25:38.197808: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:25:38.197912: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+7668 0.914886786629 test auc aupr 0.91391260083 0.927374845227
+step 0 total and dtiloss 2.18606e+08 719.811
+valid auc aupr, 0.564139941691 0.568390713041 test auc aupr 0.439920987654 0.473578169362
+step 25 total and dtiloss 1.22215e+07 519.875
+valid auc aupr, 0.621477162293 0.670230957632 test auc aupr 0.513520987654 0.516024360717
+step 50 total and dtiloss 1.03333e+07 441.778
+valid auc aupr, 0.798347910593 0.8034817788 test auc aupr 0.625580246914 0.604660544892
+step 75 total and dtiloss 9.89698e+06 392.628
+valid auc aupr, 0.817298347911 0.820705231991 test auc aupr 0.667516049383 0.656008570541
+step 100 total and dtiloss 9.61989e+06 359.463
+valid auc aupr, 0.848396501458 0.87791252889 test auc aupr 0.72744691358 0.729834414913
+step 125 total and dtiloss 9.45329e+06 322.472
+valid auc aupr, 0.868804664723 0.900053430114 test auc aupr 0.765748148148 0.762168028661
+step 150 total and dtiloss 9.40485e+06 266.854
+valid auc aupr, 0.880952380952 0.912508170292 test auc aupr 0.794172839506 0.778738396645
+step 175 total and dtiloss 9.33472e+06 403.712
+valid auc aupr, 0.877551020408 0.913128459253 test auc aupr 0.816256790123 0.803159467495
+step 200 total and dtiloss 9.35219e+06 231.263
+valid auc aupr, 0.884839650146 0.915138184725 test auc aupr 0.82929382716 0.817581363036
+step 225 total and dtiloss 9.03604e+06 205.925
+valid auc aupr, 0.871234207969 0.904552513831 test auc aupr 0.82929382716 0.817581363036
+step 250 total and dtiloss 8.82895e+06 185.808
+valid auc aupr, 0.884353741497 0.903670384004 test auc aupr 0.82929382716 0.817581363036
+step 275 total and dtiloss 8.64065e+06 169.679
+valid auc aupr, 0.874149659864 0.876263782489 test auc aupr 0.82929382716 0.817581363036
+step 300 total and dtiloss 8.28996e+06 159.52
+valid auc aupr, 0.876093294461 0.897550813673 test auc aupr 0.82929382716 0.817581363036
+step 325 total and dtiloss 8.00606e+06 149.171
+valid auc aupr, 0.879008746356 0.909942208216 test auc aupr 0.82929382716 0.817581363036
+step 350 total and dtiloss 7.89652e+06 136.469
+valid auc aupr, 0.8824101069 0.910868295742 test auc aupr 0.82929382716 0.817581363036
+step 375 total and dtiloss 7.76175e+06 127.698
+valid auc aupr, 0.885325558795 0.905820003583 test auc aupr 0.82929382716 0.817581363036
+step 400 total and dtiloss 7.61441e+06 118.345
+valid auc aupr, 0.886783284742 0.906446259356 test auc aupr 0.82929382716 0.817581363036
+step 425 total and dtiloss 7.49717e+06 281.511
+valid auc aupr, 0.880952380952 0.907460492024 test auc aupr 0.82929382716 0.817581363036
+step 450 total and dtiloss 7.2738e+06 154.906
+valid auc aupr, 0.894557823129 0.916872200397 test auc aupr 0.865185185185 0.873207320258
+step 475 total and dtiloss 7.14699e+06 125.048
+valid auc aupr, 0.893100097182 0.920520326772 test auc aupr 0.868701234568 0.881671767518
+step 0 total and dtiloss 2.27479e+08 505.054
+valid auc aupr, 0.533041788144 0.527214572913 test auc aupr 0.510143209877 0.488624747724
+step 25 total and dtiloss 1.16641e+07 450.864
+valid auc aupr, 0.597181729835 0.635884762499 test auc aupr 0.615051851852 0.582834877603
+step 50 total and dtiloss 9.75705e+06 599.588
+valid auc aupr, 0.758503401361 0.771105890819 test auc aupr 0.715407407407 0.730156192822
+step 75 total and dtiloss 9.82937e+06 397.326
+valid auc aupr, 0.773566569485 0.814947465755 test auc aupr 0.736632098765 0.76602365435
+step 100 total and dtiloss 9.9021e+06 380.539
+valid auc aupr, 0.786686103013 0.809121622141 test auc aupr 0.736632098765 0.76602365435
+step 125 total and dtiloss 9.87555e+06 361.433
+valid auc aupr, 0.797862001944 0.827989830553 test auc aupr 0.779674074074 0.793242823401
+step 150 total and dtiloss 9.56566e+06 328.075
+valid auc aupr, 0.821185617104 0.873430084155 test auc aupr 0.802488888889 0.811615205862
+step 175 total and dtiloss 9.50118e+06 590.306
+valid auc aupr, 0.844023323615 0.893155454025 test auc aupr 0.825975308642 0.824382670612
+step 200 total and dtiloss 9.57875e+06 337.05
+valid auc aupr, 0.844023323615 0.897796091683 test auc aupr 0.827140740741 0.823221796254
+step 225 total and dtiloss 9.45847e+06 284.424
+valid auc aupr, 0.846452866861 0.895931072865 test auc aupr 0.827140740741 0.823221796254
+step 250 total and dtiloss 9.4529e+06 241.969
+valid auc aupr, 0.839650145773 0.891420158099 test auc aupr 0.827140740741 0.823221796254
+step 275 total and dtiloss 9.62714e+06 214.821
+valid auc aupr, 0.834791059281 0.873080043775 test auc aupr 0.827140740741 0.823221796254
+step 300 total and dtiloss 9.01338e+06 202.669
+valid auc aupr, 0.878036929057 0.908353227232 test auc aupr 0.890291358025 0.88952859096
+step 325 total and dtiloss 8.82391e+06 282.302
+valid auc aupr, 0.904761904762 0.932474045323 test auc aupr 0.892958024691 0.896220666929
+step 350 total and dtiloss 8.49958e+06 228.165
+valid auc aupr, 0.903790087464 0.929575480154 test auc aupr 0.892958024691 0.896220666929
+step 375 total and dtiloss 8.12516e+06 189.696
+valid auc aupr, 0.906705539359 0.933704022906 test auc aupr 0.894637037037 0.902578608054
+step 400 total and dtiloss 7.9247e+06 195.909
+valid auc aupr, 0.918367346939 0.943902064104 test auc aupr 0.896928395062 0.907549458859
+step 425 total and dtiloss 7.71992e+06 160.613
+valid auc aupr, 0.915937803693 0.941404520997 test auc aupr 0.896928395062 0.907549458859
+step 450 total and dtiloss 7.60464e+06 155.033
+valid auc aupr, 0.924198250729 0.949685600207 test auc aupr 0.894360493827 0.904413863998
+step 475 total and dtiloss 7.40454e+06 143.78
+valid auc aupr, 0.931486880466 0.954228694851 test auc aupr 0.8992 0.908991905132
+step 0 total and dtiloss 2.15811e+08 829.087
+valid auc aupr, 0.408649173955 0.51489324876 test auc aupr 0.520513580247 0.510673040283
+step 25 total and dtiloss 1.21304e+07 561.421
+valid auc aupr, 0.507774538387 0.613027395301 test auc aupr 0.590617283951 0.567627189013
+step 50 total and dtiloss 9.91649e+06 414.351
+valid auc aupr, 0.671525753158 0.731576547478 test auc aupr 0.659496296296 0.646451599287
+step 75 total and dtiloss 9.55235e+06 394.325
+valid auc aupr, 0.795432458698 0.830747847342 test auc aupr 0.741708641975 0.752159628426
+step 100 total and dtiloss 1.07425e+07 355.61
+valid auc aupr, 0.834305150632 0.869523707724 test auc aupr 0.801422222222 0.802366854258
+step 125 total and dtiloss 1.00854e+07 703.275
+valid auc aupr, 0.842079689018 0.850597161619 test auc aupr 0.801422222222 0.802366854258
+step 150 total and dtiloss 9.4039e+06 471.077
+valid auc aupr, 0.821185617104 0.812557957547 test auc aupr 0.801422222222 0.802366854258
+step 175 total and dtiloss 9.6652e+06 312.93
+valid auc aupr, 0.8527696793 0.823161296327 test auc aupr 0.801422222222 0.802366854258
+step 200 total and dtiloss 9.70818e+06 281.713
+valid auc aupr, 0.862973760933 0.837349127117 test auc aupr 0.801422222222 0.802366854258
+step 225 total and dtiloss 9.38033e+06 858.626
+valid auc aupr, 0.852283770651 0.871598204909 test auc aupr 0.859911111111 0.871334560128
+step 250 total and dtiloss 9.03774e+06 329.309
+valid auc aupr, 0.854227405248 0.86742261362 test auc aupr 0.859911111111 0.871334560128
+step 275 total and dtiloss 9.0052e+06 254.107
+valid auc aupr, 0.873663751215 0.882151959373 test auc aupr 0.870597530864 0.875801418798
+step 300 total and dtiloss 8.56491e+06 227.311
+valid auc aupr, 0.883381924198 0.889738840667 test auc aupr 0.87492345679 0.864989555086
+step 325 total and dtiloss 8.32844e+06 219.635
+valid auc aupr, 0.879980563654 0.884367816621 test auc aupr 0.87492345679 0.864989555086
+step 350 total and dtiloss 8.3257e+06 201.979
+valid auc aupr, 0.8824101069 0.874987520051 test auc aupr 0.87492345679 0.864989555086
+step 375 total and dtiloss 8.13513e+06 182.304
+valid auc aupr, 0.88824101069 0.854748081904 test auc aupr 0.87492345679 0.864989555086
+step 400 total and dtiloss 7.91255e+06 170.571
+valid auc aupr, 0.903790087464 0.856186541459 test auc aupr 0.87492345679 0.864989555086
+step 425 total and dtiloss 7.76081e+06 142.582
+valid auc aupr, 0.921282798834 0.899889108231 test auc aupr 0.890804938272 0.878131574206
+step 450 total and dtiloss 7.54778e+06 125.749
+valid auc aupr, 0.939747327502 0.92970392102 test auc aupr 0.897797530864 0.892056489847
+step 475 total and dtiloss 7.28845e+06 116.901
+valid auc aupr, 0.950437317784 0.955604453004 test auc aupr 0.896922021-12-12 21:31:11.104616: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:31:11.104723: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:36:46.443446: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:36:46.443547: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:42:15.466418: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:42:15.470389: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+8395062 0.880876166994
+step 0 total and dtiloss 2.186e+08 482.029
+valid auc aupr, 0.461613216715 0.491439812189 test auc aupr 0.530054320988 0.553670841456
+step 25 total and dtiloss 1.16242e+07 413.079
+valid auc aupr, 0.644800777454 0.675009121523 test auc aupr 0.680750617284 0.691834234447
+step 50 total and dtiloss 1.043e+07 554.45
+valid auc aupr, 0.763848396501 0.819857601477 test auc aupr 0.77037037037 0.810271600494
+step 75 total and dtiloss 1.00364e+07 385.539
+valid auc aupr, 0.796890184645 0.852998840447 test auc aupr 0.780701234568 0.812341603144
+step 100 total and dtiloss 9.56984e+06 365.008
+valid auc aupr, 0.812925170068 0.863959629866 test auc aupr 0.789945679012 0.815291139537
+step 125 total and dtiloss 9.69423e+06 343.026
+valid auc aupr, 0.828960155491 0.87563681999 test auc aupr 0.79867654321 0.82040957704
+step 150 total and dtiloss 9.95923e+06 393.275
+valid auc aupr, 0.853741496599 0.891593148952 test auc aupr 0.808158024691 0.825343223797
+step 175 total and dtiloss 9.45734e+06 355.956
+valid auc aupr, 0.87074829932 0.902953203476 test auc aupr 0.821787654321 0.838813902523
+step 200 total and dtiloss 9.36207e+06 271.403
+valid auc aupr, 0.884839650146 0.915501072003 test auc aupr 0.83095308642 0.843207426135
+step 225 total and dtiloss 9.24889e+06 244.06
+valid auc aupr, 0.894557823129 0.922432149885 test auc aupr 0.848888888889 0.846496260748
+step 250 total and dtiloss 9.04663e+06 207.753
+valid auc aupr, 0.889698736638 0.917686759991 test auc aupr 0.848888888889 0.846496260748
+step 275 total and dtiloss 8.90852e+06 182.203
+valid auc aupr, 0.902818270165 0.92047300736 test auc aupr 0.848888888889 0.846496260748
+step 300 total and dtiloss 8.42258e+06 208.997
+valid auc aupr, 0.914480077745 0.936122566123 test auc aupr 0.894459259259 0.882606473156
+step 325 total and dtiloss 8.46547e+06 200.655
+valid auc aupr, 0.916909620991 0.941304718289 test auc aupr 0.887348148148 0.880617289818
+step 350 total and dtiloss 8.34684e+06 182.336
+valid auc aupr, 0.929057337221 0.948496481001 test auc aupr 0.890903703704 0.875630900577
+step 375 total and dtiloss 8.09643e+06 163.684
+valid auc aupr, 0.937317784257 0.955897299607 test auc aupr 0.89627654321 0.880195400469
+step 400 total and dtiloss 7.8671e+06 149.497
+valid auc aupr, 0.940233236152 0.956478383021 test auc aupr 0.901550617284 0.889882220629
+step 425 total and dtiloss 7.73339e+06 151.837
+valid auc aupr, 0.92371234208 0.936882229681 test auc aupr 0.901550617284 0.889882220629
+step 450 total and dtiloss 7.47693e+06 130.277
+valid auc aupr, 0.931486880466 0.946332542305 test auc aupr 0.901550617284 0.889882220629
+step 475 total and dtiloss 7.30143e+06 132.249
+valid auc aupr, 0.935860058309 0.952376204526 test auc aupr 0.901550617284 0.889882220629
+sample round 3
+step 0 total and dtiloss 2.27037e+08 1229.98
+valid auc aupr, 0.41612742658 0.515716901213 test auc aupr 0.431768345211 0.456392243949
+step 25 total and dtiloss 1.28386e+07 477.356
+valid auc aupr, 0.491786958686 0.537711726752 test auc aupr 0.528761061947 0.511465440146
+step 50 total and dtiloss 9.90268e+06 414.882
+valid auc aupr, 0.733200597312 0.739770361087 test auc aupr 0.685762393296 0.659980516147
+step 75 total and dtiloss 9.66563e+06 382.175
+valid auc aupr, 0.793429566949 0.812806151016 test auc aupr 0.771242853787 0.763863059679
+step 100 total and dtiloss 9.55234e+06 350.034
+valid auc aupr, 0.806371329019 0.811417692684 test auc aupr 0.771242853787 0.763863059679
+step 125 total and dtiloss 9.50811e+06 304.92
+valid auc aupr, 0.827277252364 0.828867589109 test auc aupr 0.835558775159 0.843117015614
+step 150 total and dtiloss 9.40156e+06 325.897
+valid auc aupr, 0.844698855152 0.850980037577 test auc aupr 0.865377085128 0.877599830758
+step 175 total and dtiloss 9.36262e+06 231.158
+valid auc aupr, 0.848183175709 0.845915437578 test auc aupr 0.865377085128 0.877599830758
+step 200 total and dtiloss 9.29542e+06 202.246
+valid auc aupr, 0.860129417621 0.878765118322 test auc aupr 0.895469496437 0.901519519774
+step 225 total and dtiloss 9.17854e+06 201.147
+valid auc aupr, 0.878546540567 0.893267392927 test auc aupr 0.907549534028 0.909630899328
+step 250 total and dtiloss 8.96257e+06 168.433
+valid auc aupr, 0.886510701842 0.90494728304 test auc aupr 0.916653614222 0.913955126485
+step 275 total and dtiloss 8.69018e+06 540.924
+valid auc aupr, 0.873071179691 0.903546369163 test auc aupr 0.916653614222 0.913955126485
+step 300 total and dtiloss 8.41076e+06 191.81
+valid auc aupr, 0.871577899452 0.890320176693 test auc aupr 0.916653614222 0.913955126485
+step 325 total and dtiloss 8.1427e+06 168.925
+valid auc aupr, 0.871080139373 0.899631349986 test auc aupr 0.916653614222 0.913955126485
+step 350 total and dtiloss 7.99019e+06 155.922
+valid auc aupr, 0.87506222001 0.913203725406 test auc aupr 0.927637246456 0.929541968659
+step 375 total and dtiloss 7.81804e+06 156.831
+valid auc aupr, 0.882030861125 0.922402072755 test auc aupr 0.927695982458 0.93387685772
+step 400 total and dtiloss 7.61671e+06 140.563
+valid auc aupr, 0.885017421603 0.923613638943 test auc aupr 0.931200563866 0.930087553928
+step 425 total and dtiloss 7.54593e+06 132.564
+valid auc aupr, 0.884519661523 0.925444515658 test auc aupr 0.933197587908 0.931237424006
+step 450 total and dtiloss 7.35046e+06 123.175
+valid auc aupr, 0.88949726232 0.929757757655 test auc aupr 0.932864750568 0.928465137213
+step 475 total and dtiloss 7.23409e+06 115.901
+valid auc aupr, 0.890990542558 0.930825756888 test auc aupr 0.93358916125 0.926697950804
+step 0 total and dtiloss 2.13363e+08 891.911
+valid auc aupr, 0.478134110787 0.504082074134 test auc aupr 0.506765432099 0.512504516248
+step 25 total and dtiloss 1.21716e+07 424.307
+valid auc aupr, 0.686588921283 0.744852127734 test auc aupr 0.570054320988 0.564543327849
+step 50 total and dtiloss 1.0301e+07 385.897
+valid auc aupr, 0.75267249757 0.758705995506 test auc aupr 0.702419753086 0.72744684678
+step 75 total and dtiloss 9.95582e+06 372.119
+valid auc aupr, 0.765792031098 0.815839348414 test auc aupr 0.744217283951 0.765035429634
+step 100 total and dtiloss 9.58344e+06 349.969
+valid auc aupr, 0.779397473275 0.837350868127 test auc aupr 0.780543209877 0.798037650385
+step 125 total and dtiloss 9.50882e+06 346.849
+valid auc aupr, 0.797862001944 0.848148337807 test auc aupr 0.795259259259 0.817093008935
+step 150 total and dtiloss 9.59269e+06 304.698
+valid auc aupr, 0.836248785228 0.874353076467 test auc aupr 0.809343209877 0.833907299339
+step 175 total and dtiloss 9.57394e+06 261.62
+valid auc aupr, 0.86443148688 0.897237506484 test auc aupr 0.82769382716 0.853079833479
+step 200 total and dtiloss 9.34282e+06 263.573
+valid auc aupr, 0.891156462585 0.91926129862 test auc aupr 0.857086419753 0.878348229183
+step 225 total and dtiloss 9.43174e+06 233.444
+valid auc aupr, 0.891642371234 0.91734419945 test auc aupr 0.857086419753 0.878348229183
+step 250 total and dtiloss 8.92787e+06 247.494
+valid auc aupr, 0.890670553936 0.918542552287 test auc aupr 0.857086419753 0.878348229183
+step 275 total and dtiloss 8.59534e+06 252.617
+valid auc aupr, 0.897959183673 0.927490069407 test auc aupr 0.882587654321 0.892290308275
+step 300 total and dtiloss 8.22144e+06 239.964
+valid auc aupr, 0.863459669582 0.90449553956 test auc aupr 0.882587654321 0.892290308275
+step 325 total and dtiloss 8.18546e+06 192.396
+valid auc aupr, 0.87074829932 0.903160113569 test auc aupr 0.882587654321 0.892290308275
+step 350 total and dtiloss 8.10812e+06 179.101
+valid auc aupr, 0.870262390671 0.89764577966 test auc aupr 0.882587654321 0.892290308275
+step 375 total and dtiloss 8.50949e+06 169.699
+valid auc aupr, 0.871234207969 0.900640052018 test auc aupr 0.882587654321 0.892290308275
+step 400 total and dtiloss 8.35466e+06 159.326
+valid auc aupr, 0.874635568513 0.906418225084 test auc aupr 0.882587654321 0.892290308275
+step 425 total and dtiloss 8.13339e+06 146.11
+valid auc aupr, 0.883867832847 0.913458711412 test auc aupr 0.882587654321 0.892290308275
+step 450 total and dtiloss 7.7166e+06 137.425
+valid auc aupr, 0.892614188533 0.919183058956 test auc aupr 0.882587654321 0.892290308275
+step 475 total and dtiloss 7.54984e+06 139.298
+valid auc aupr, 0.895529640428 0.913728387566 test auc aupr 0.882587654321 0.2021-12-12 21:47:45.066738: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:47:45.066857: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:53:19.309139: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:53:19.309248: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+2021-12-12 21:58:52.590427: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:0) -> (device: 0, name: Tesla K80, pci bus id: 0000:83:00.0)
+2021-12-12 21:58:52.591138: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Creating TensorFlow device (/gpu:1) -> (device: 1, name: Tesla K80, pci bus id: 0000:84:00.0)
+WARNING:tensorflow:From /scratch/user/sunyuanfei/.conda/envs/NeoDTI/lib/python2.7/site-packages/tensorflow/python/util/tf_should_use.py:170: initialize_all_variables (from tensorflow.python.ops.variables) is deprecated and will be removed after 2017-03-02.
+Instructions for updating:
+Use `tf.global_variables_initializer` instead.
+892290308275
+step 0 total and dtiloss 2.16775e+08 883.319
+valid auc aupr, 0.449951409135 0.519627083817 test auc aupr 0.446459259259 0.469814047805
+step 25 total and dtiloss 1.18725e+07 448.48
+valid auc aupr, 0.555879494655 0.614030671182 test auc aupr 0.53175308642 0.53700476169
+step 50 total and dtiloss 9.88336e+06 411.994
+valid auc aupr, 0.661807580175 0.729835397025 test auc aupr 0.69362962963 0.691799202223
+step 75 total and dtiloss 1.05638e+07 404.239
+valid auc aupr, 0.709912536443 0.780939605943 test auc aupr 0.768138271605 0.778840830139
+step 100 total and dtiloss 9.5134e+06 378.29
+valid auc aupr, 0.749757045675 0.818831332445 test auc aupr 0.792711111111 0.806158983166
+step 125 total and dtiloss 9.83107e+06 350.362
+valid auc aupr, 0.760932944606 0.811586888092 test auc aupr 0.792711111111 0.806158983166
+step 150 total and dtiloss 9.92365e+06 317.975
+valid auc aupr, 0.794460641399 0.808712214722 test auc aupr 0.792711111111 0.806158983166
+step 175 total and dtiloss 9.44092e+06 346.214
+valid auc aupr, 0.816812439261 0.834390248166 test auc aupr 0.863407407407 0.856453538664
+step 200 total and dtiloss 9.40516e+06 297.692
+valid auc aupr, 0.827016520894 0.826493177908 test auc aupr 0.863407407407 0.856453538664
+step 225 total and dtiloss 9.70908e+06 261.62
+valid auc aupr, 0.848396501458 0.839397918793 test auc aupr 0.886419753086 0.871357198318
+step 250 total and dtiloss 9.30069e+06 242.923
+valid auc aupr, 0.871720116618 0.866537076642 test auc aupr 0.893254320988 0.885372999902
+step 275 total and dtiloss 9.32003e+06 220.059
+valid auc aupr, 0.87657920311 0.876241808765 test auc aupr 0.898666666667 0.893163453227
+step 300 total and dtiloss 9.29828e+06 212.512
+valid auc aupr, 0.870262390671 0.860279594264 test auc aupr 0.898666666667 0.893163453227
+step 325 total and dtiloss 8.78855e+06 198.482
+valid auc aupr, 0.862973760933 0.843970733561 test auc aupr 0.898666666667 0.893163453227
+step 350 total and dtiloss 8.57326e+06 192.097
+valid auc aupr, 0.871720116618 0.876176133 test auc aupr 0.898666666667 0.893163453227
+step 375 total and dtiloss 8.47748e+06 174.195
+valid auc aupr, 0.881438289602 0.897264432351 test auc aupr 0.914765432099 0.92133476927
+step 400 total and dtiloss 8.15617e+06 163.043
+valid auc aupr, 0.887755102041 0.897683058532 test auc aupr 0.911664197531 0.917845557599
+step 425 total and dtiloss 8.09798e+06 156.45
+valid auc aupr, 0.888726919339 0.906210337875 test auc aupr 0.911091358025 0.916358018061
+step 450 total and dtiloss 8.17785e+06 147.618
+valid auc aupr, 0.899416909621 0.921897453046 test auc aupr 0.913422222222 0.909614636638
+step 475 total and dtiloss 7.80473e+06 138.213
+valid auc aupr, 0.901846452867 0.922370402766 test auc aupr 0.916009876543 0.912022134694
+step 0 total and dtiloss 2.34648e+08 769.586
+valid auc aupr, 0.497084548105 0.551174398802 test auc aupr 0.465382716049 0.456866593112
+step 25 total and dtiloss 1.18614e+07 442.928
+valid auc aupr, 0.699222546161 0.774014574746 test auc aupr 0.647624691358 0.629766204092
+step 50 total and dtiloss 9.97431e+06 383.655
+valid auc aupr, 0.748299319728 0.80667007715 test auc aupr 0.7408 0.768898855288
+step 75 total and dtiloss 9.61442e+06 347.708
+valid auc aupr, 0.776967930029 0.810547380019 test auc aupr 0.785007407407 0.804509243627
+step 100 total and dtiloss 9.53287e+06 299.513
+valid auc aupr, 0.810009718173 0.827251388326 test auc aupr 0.812483950617 0.82885246273
+step 125 total and dtiloss 9.46098e+06 240.553
+valid auc aupr, 0.834305150632 0.839551254041 test auc aupr 0.831782716049 0.840723180387
+step 150 total and dtiloss 9.39701e+06 233.957
+valid auc aupr, 0.844509232264 0.84231861435 test auc aupr 0.837392592593 0.840578410444
+step 175 total and dtiloss 9.3654e+06 190.525
+valid auc aupr, 0.845966958212 0.853504876796 test auc aupr 0.844543209877 0.843491737581
+step 200 total and dtiloss 9.32811e+06 173.761
+valid auc aupr, 0.856171039845 0.884272473377 test auc aupr 0.85384691358 0.852136545194
+step 225 total and dtiloss 9.23494e+06 279.002
+valid auc aupr, 0.876093294461 0.895664609571 test auc aupr 0.86295308642 0.863033309862
+step 250 total and dtiloss 8.88207e+06 317.882
+valid auc aupr, 0.883381924198 0.900744121857 test auc aupr 0.859555555556 0.872067475556
+step 275 total and dtiloss 8.43882e+06 214.108
+valid auc aupr, 0.889212827988 0.905464924865 test auc aupr 0.867437037037 0.880110760241
+step 300 total and dtiloss 8.26206e+06 184.329
+valid auc aupr, 0.882896015549 0.899847759531 test auc aupr 0.867437037037 0.880110760241
+step 325 total and dtiloss 8.05294e+06 168.237
+valid auc aupr, 0.879008746356 0.893844706415 test auc aupr 0.867437037037 0.880110760241
+step 350 total and dtiloss 7.95398e+06 155.21
+valid auc aupr, 0.883381924198 0.903324727308 test auc aupr 0.867437037037 0.880110760241
+step 375 total and dtiloss 7.76083e+06 139.979
+valid auc aupr, 0.890184645287 0.911950188343 test auc aupr 0.873896296296 0.887902311696
+step 400 total and dtiloss 7.65557e+06 127.389
+valid auc aupr, 0.896501457726 0.92309671857 test auc aupr 0.879051851852 0.895699350485
+step 425 total and dtiloss 7.48219e+06 118.694
+valid auc aupr, 0.897959183673 0.92653774264 test auc aupr 0.883022222222 0.901686972302
+step 450 total and dtiloss 7.35251e+06 112.012
+valid auc aupr, 0.895529640428 0.926106782844 test auc aupr 0.883022222222 0.901686972302
+step 475 total and dtiloss 7.27056e+06 111.23
+valid auc aupr, 0.891642371234 0.925282823141 test auc aupr 0.883022222222 0.901686972302
+step 0 total and dtiloss 2.20083e+08 844.153
+valid auc aupr, 0.534013605442 0.545169417129 test auc aupr 0.519051851852 0.498992364563
+step 25 total and dtiloss 1.24461e+07 459.622
+valid auc aupr, 0.47667638484 0.502172188744 test auc aupr 0.519051851852 0.498992364563
+step 50 total and dtiloss 9.98407e+06 392.602
+valid auc aupr, 0.707968901846 0.685597924244 test auc aupr 0.722745679012 0.740979739955
+step 75 total and dtiloss 9.91351e+06 699.471
+valid auc aupr, 0.784256559767 0.793728981014 test auc aupr 0.772879012346 0.786320842644
+step 100 total and dtiloss 9.5937e+06 416.034
+valid auc aupr, 0.80563654033 0.822363826557 test auc aupr 0.771733333333 0.772995050776
+step 125 total and dtiloss 9.68119e+06 366.051
+valid auc aupr, 0.847424684159 0.856707144633 test auc aupr 0.786883950617 0.789162842213
+step 150 total and dtiloss 9.46728e+06 323.469
+valid auc aupr, 0.865889212828 0.880053082137 test auc aupr 0.796839506173 0.808341904759
+step 175 total and dtiloss 9.52642e+06 273.04
+valid auc aupr, 0.875607385811 0.88177894716 test auc aupr 0.799288888889 0.804184805281
+step 200 total and dtiloss 9.66605e+06 238.728
+valid auc aupr, 0.882896015549 0.887278281285 test auc aupr 0.818864197531 0.80580377481
+step 225 total and dtiloss 9.41841e+06 484.169
+valid auc aupr, 0.888726919339 0.898376792039 test auc aupr 0.83812345679 0.817833247415
+step 250 total and dtiloss 9.26819e+06 239.437
+valid auc aupr, 0.883381924198 0.902328248324 test auc aupr 0.84292345679 0.825471227087
+step 275 total and dtiloss 9.14653e+06 206.905
+valid auc aupr, 0.893586005831 0.914564440635 test auc aupr 0.852918518519 0.838977391048
+step 300 total and dtiloss 8.76052e+06 193.298
+valid auc aupr, 0.916423712342 0.936245846678 test auc aupr 0.8592 0.849228732644
+step 325 total and dtiloss 8.53638e+06 557.629
+valid auc aupr, 0.870262390671 0.895833795975 test auc aupr 0.8592 0.849228732644
+step 350 total and dtiloss 8.26534e+06 211.016
+valid auc aupr, 0.910106899903 0.93607343204 test auc aupr 0.8592 0.849228732644
+step 375 total and dtiloss 7.95882e+06 182.079
+valid auc aupr, 0.927113702624 0.947286648683 test auc aupr 0.867733333333 0.872738687477
+step 400 total and dtiloss 7.89073e+06 165.515
+valid auc aupr, 0.924684159378 0.94350116136 test auc aupr 0.867733333333 0.872738687477
+step 425 total and dtiloss 7.71565e+06 149.745
+valid auc aupr, 0.930515063168 0.948353351156 test auc aupr 0.875081481481 0.884019469775
+step 450 total and dtiloss 7.63111e+06 135.072
+valid auc aupr, 0.939261418853 0.955831142807 test auc aupr 0.884207407407 0.891995980368
+step 475 total and dtiloss 7.30712e+06 123.56
+valid auc aupr, 0.938775510204 0.958351358815 test auc aupr 0.889777777778 0.890422663921

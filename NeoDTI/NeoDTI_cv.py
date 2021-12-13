@@ -42,7 +42,7 @@ def row_normalize(a_matrix, substract_self_loop):
     return new_matrix
 
 #load network
-network_path = '../data/'
+network_path = '../Data/'
 
 drug_drug = np.loadtxt(network_path+'mat_drug_drug.txt')
 #print 'loaded drug drug', check_symmetric(drug_drug), np.shape(drug_drug)
@@ -241,7 +241,7 @@ with graph.as_default():
 
     eval_pred = model.drug_protein_reconstruct
 
-def train_and_evaluate(DTItrain, DTIvalid, DTItest, graph, verbose=True, num_steps = 4000):
+def train_and_evaluate(DTItrain, DTIvalid, DTItest, graph, verbose=True, num_steps = 1500):
     drug_protein = np.zeros((num_drug,num_protein))
     mask = np.zeros((num_drug,num_protein))
     for ele in DTItrain:
@@ -303,7 +303,10 @@ def train_and_evaluate(DTItrain, DTIvalid, DTItest, graph, verbose=True, num_ste
 
 test_auc_round = []
 test_aupr_round = []
-for r in xrange(10):
+round_num = 3
+n_folds=5
+num_steps = 500
+for r in xrange(round_num): # N-fold CV
     print 'sample round',r+1
     if opts.t == 'o':
         dti_o = np.loadtxt(network_path+'mat_drug_protein.txt')
@@ -322,6 +325,8 @@ for r in xrange(10):
 
     if opts.r == 'ten':
         negative_sample_index = np.random.choice(np.arange(len(whole_negative_index)),size=10*len(whole_positive_index),replace=False)
+    elif opts.r == 'one':
+            negative_sample_index = np.random.choice(np.arange(len(whole_negative_index)),size=len(whole_positive_index),replace=False)
     elif opts.r == 'all':
         negative_sample_index = np.random.choice(np.arange(len(whole_negative_index)),size=len(whole_negative_index),replace=False)
     else:
@@ -355,8 +360,10 @@ for r in xrange(10):
 
         if opts.r == 'ten':
             negative_sample_index_test = np.random.choice(np.arange(len(whole_negative_index_test)),size=10*len(whole_positive_index_test),replace=False)
+        elif opts.r == 'one':
+            negative_sample_index_test = np.random.choice(np.arange(len(whole_negative_index_test)),size=len(whole_positive_index_test),replace=False)
         elif opts.r == 'all':
-            negative_sample_index_test = np.random.choice(np.arange(len(whole_negative_index_test)),size=whole_negative_index_test,replace=False)
+            negative_sample_index_test = np.random.choice(np.arange(len(whole_negative_index_test)),size=len(whole_negative_index_test),replace=False)
         else:
             print 'wrong positive negative ratio'
             break
@@ -377,28 +384,29 @@ for r in xrange(10):
         DTItest = data_set_test
         rs = np.random.randint(0,1000,1)[0]
         DTItrain, DTIvalid =  train_test_split(DTItrain, test_size=0.05, random_state=rs)
-        v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=3000)
+        v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
 
         test_auc_round.append(t_auc)
         test_aupr_round.append(t_aupr)
-        np.savetxt('test_auc', test_auc_round)
-        np.savetxt('test_aupr', test_aupr_round)
 
     else:
         test_auc_fold = []
         test_aupr_fold = []
         rs = np.random.randint(0,1000,1)[0]
-        kf = StratifiedKFold(data_set[:,2], n_folds=10, shuffle=True, random_state=rs)
+        kf = StratifiedKFold(data_set[:,2], n_folds=n_folds, shuffle=True, random_state=rs)
 
         for train_index, test_index in kf:
             DTItrain, DTItest = data_set[train_index], data_set[test_index]
             DTItrain, DTIvalid =  train_test_split(DTItrain, test_size=0.05, random_state=rs)
 
-            v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=3000)
+            v_auc, v_aupr, t_auc, t_aupr = train_and_evaluate(DTItrain=DTItrain, DTIvalid=DTIvalid, DTItest=DTItest, graph=graph, num_steps=num_steps)
             test_auc_fold.append(t_auc)
             test_aupr_fold.append(t_aupr)
 
         test_auc_round.append(np.mean(test_auc_fold))
         test_aupr_round.append(np.mean(test_aupr_fold))
-        np.savetxt('test_auc', test_auc_round)
-        np.savetxt('test_aupr', test_aupr_round)
+
+#np.savetxt('results/test_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_auc_round)
+#np.savetxt('results/test_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_aupr_round)
+np.savetxt('results/test_auc_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_auc_round)
+np.savetxt('results/test_aupr_round%s_step%s_%s_%s' % (round_num, num_steps, opts.t, opts.r), test_aupr_round)

@@ -1,0 +1,32 @@
+#!/bin/bash
+##ENVIRONMENT SETTINGS; CHANGE WITH CAUTION
+#SBATCH --export=NONE                #Do not propagate environment
+#SBATCH --get-user-env=L             #Replicate login environment
+
+##NECESSARY JOB SPECIFICATIONS
+#SBATCH --time=10:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem=50G 
+#SBATCH --gres=gpu:2
+####SBATCH --partition=xlong
+
+##OPTIONAL JOB SPECIFICATIONS
+####SBATCH --mail-type=ALL
+####SBATCH --mail-user=sunyuanfei@tamu.edu
+#SBATCH --account=122807221847
+#SBATCH --job-name=one_unique
+#SBATCH --output=/scratch/user/sunyuanfei/Projects/TAMU_CSCE689_CourseProject/NeoDTI/job_logs/one_unique
+
+
+#First Executable Line
+
+module purge
+source ~/.bashrc
+module load cuDNN/5.0-CUDA-8.0.44
+conda activate NeoDTI
+
+python NeoDTI_cv.py -r one -t unique
+
+conda deactivate
+module purge
